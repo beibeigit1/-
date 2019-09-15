@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // var x=[typeof x,typeof y][1];
+    // console.log(typeof typeof x);//string
+
+    // console.log(!!(new Boolean(false)))
+
+    // ['1','2','3'].map(parseInt)// [1, NaN, NaN]
+
+    // var a=[];
+    // for(let i=0;i<10;i++){
+    //     a[i]=function(){
+    //         console.log(i);
+    //     }
+    // }
+    // a[6]()
+
+    // var obj={name:'zs',show:function(){alert(this.name);}}
+    // obj.show();
+    
+     //自定义计算字符串的字节长度
+     function reBytes(str) {
+            var num = str.length;
+            for(var i = 0 ; i < num; i++) {
+                if(str.charCodeAt(i) > 255){
+                    num++;
+                }
+            }
+            return num;
+        }
+        alert(reBytes('中国112'))
+    
+    </script>
+</body>
+</html>

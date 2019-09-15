@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var format = function (time, format) {
+        //     var t = new Date(time);
+        //     var tf = function (i) {
+        //      return (i < 10 ? '0' : '') + i 
+        //     };
+        //     return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
+        //         switch (a) {
+        //             case 'yyyy':
+        //                 return tf(t.getFullYear());
+        //                 break;
+        //             case 'MM':
+        //                 return tf(t.getMonth() + 1);
+        //                 break;
+        //             case 'mm':
+        //                 return tf(t.getMinutes());
+        //                 break;
+        //             case 'dd':
+        //                 return tf(t.getDate());
+        //                 break;
+        //             case 'HH':
+        //                 return tf(t.getHours());
+        //                 break;
+        //             case 'ss':
+        //                 return tf(t.getSeconds());
+        //                 break;
+        //         }
+        //     })
+        // }
+        // format(74);
+
+            function getMyDate(str){  
+                var oDate = new Date(str),  
+                oYear = oDate.getFullYear(),  
+                oMonth = oDate.getMonth()+1,  
+                oDay = oDate.getDate(),  
+                oHour = oDate.getHours(),  
+                oMin = oDate.getMinutes(),  
+                oSen = oDate.getSeconds(),  
+                oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+ getzf(oMin) +':'+getzf(oSen);//最后拼接时间  
+                return oTime;  
+            };  
+            //补0操作  
+            function getzf(num){  
+                if(parseInt(num) < 10){  
+                    num = '0'+num;  
+                }  
+                return num;  
+            }  
+
+            Date.prototype.Format = function (fmt) { //author: meizz  
+                var o = {  
+                    "M+": this.getMonth() + 1, //月份  
+                    "d+": this.getDate(), //日  
+                    "h+": this.getHours(), //小时  
+                    "m+": this.getMinutes(), //分  
+                    "s+": this.getSeconds(), //秒  
+                    "q+": Math.floor((this.getMonth() + 3) / 3), //季度  
+                    "S": this.getMilliseconds() //毫秒  
+                };  
+                if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));  
+                for (var k in o)  
+                    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));  
+                return fmt;  
+            };
+          console.log( getMyDate("10000"));
+
+        
+        
+        
+        </script>
+</body>
+</html>

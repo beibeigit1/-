@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            text-align: center;
+            /* margin:0 auto; */
+
+
+        }
+        span {
+            position: relative;
+            top: 50%;
+        }
+        header {
+            height: 48px;
+            width: 100%;
+            background: green;
+            position: absolute;
+            top: 0px;
+            line-height: 48px;
+        }
+        footer {
+            height: 48px;
+            width: 100%;
+            background: #411c99;
+            position: absolute;
+            bottom: 0px;
+            line-height: 48px;
+        }
+        #left {
+            width: 320px;
+            background: #66ffff;
+            position: absolute;
+            top: 48px;
+            bottom: 48px;
+            left: 0px;       
+        }
+        #right {
+            width: 320px;
+            /* float: right; */
+            background: red;
+            position: absolute;
+            top: 48px;
+            bottom: 48px;
+            right: 0px;
+           
+          
+        }
+        #center {
+            background: yellow;
+            position: absolute;
+            top: 48px;
+            bottom: 0px;
+            right: 320px;
+            left: 320px;
+            /* flex-grow: 1; */
+        }
+
+      
+    </style>
+</head>
+<body>
+    <header>
+        Header
+    </header>
+    <div id="content">
+        <div id="left"><span>Aside</span>
+        </div>
+        <div id='right'><span>Aside</span>
+        </div>
+        <div id="center"><span>center</span>
+        </div>
+    </div>
+    <footer> Footer</footer>
+</body>
+</html>

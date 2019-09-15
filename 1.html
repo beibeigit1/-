@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // var arr=[1,2,3];
+        // var arr1=[7,8,9];
+        // console.log(arr.valueOf());
+        // console.log(arr.toString());
+        // // console.log(arr.pop());
+        // console.log(arr.reverse());
+
+        // for (let i = 0; i <=3; i++) {
+        //     setTimeout(function () {
+        //         console.log(i);
+        //     }, 0)
+        // }
+        // console.log('end');
+
+        // console.log(Function.prototype);
+        // console.log(Object.prototype);
+        function Animal() { }//定义Animal构造函数
+        Animal.prototype = {//定义Animal原型
+            species: "动物",
+            say: function () {
+                console.log('i can say word');
+            }
+        }
+
+        function Cat(name, color) {//定义构造函数Cat
+            this.name = name;
+            this.color = color;
+        }
+        var F = function () { };
+        F.prototype = Animal.prototype;
+        Cat.prototype = new F();
+        Cat.prototype.constructor = Cat;//Cat继承Animal 用F空对象作为媒介
+
+        var eh = new Cat('lili', 'white');//实例化对象
+
+        console.log('say' in eh)//=>true
+        console.log('name' in eh)//=>true
+        console.log('color' in eh)//=>true
+        console.log('species' in eh)//=> true
+
+        console.log(eh.hasOwnProperty('say'))//=> false  //由于say为继承属性  非自有属性
+        console.log(eh.hasOwnProperty('species'))//=> false //由于species为继承属性  非自有属性
+        console.log(eh.hasOwnProperty('name'))//=> true
+        console.log(eh.hasOwnProperty('color'))//=> true
+
+        for (var key in eh) {
+            console.log(key);//
+            if (eh.hasOwnProperty(key)) {
+                console.log(key)    //=>name  color
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

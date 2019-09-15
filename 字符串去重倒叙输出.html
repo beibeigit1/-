@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+
+        function norepeat(str) {
+            var newStr = '';
+            for (var i = 0; i < str.length; i++) {
+                if (newStr.search(str[i]) == -1)
+                    newStr += str[i];
+            }
+            return newStr.split('').reverse().join('');
+        }
+       norepeat('hey there')
+    </script>
+</body>
+
+</html>

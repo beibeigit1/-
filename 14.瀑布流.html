@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #s_waterFall {
+            width: 1300px;
+            /* 宽度 */
+            margin: 100px auto;
+            /* 居中 */
+            position: relative;
+        }
+
+        .waterDiv {
+            width: 230px;
+            /* 每一列的宽度 */
+            box-shadow: -3px 3px 5px #111;
+            /* 视觉效果 */
+            border: solid #999 1px;
+            /* 视觉效果 */
+            position: absolute;
+            /* 设置为绝对定位 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="s_waterFall">
+        <div class="waterDiv">
+            <span>hello</span>
+        </div>
+        <div class="waterDiv">
+            <a href="#">
+                <img src="./imges/2.jpg" />
+                <span>hello</span>
+            </a>
+        </div>
+        <div class="waterDiv">
+            <a href="#">
+                <img src="./imges/3.jpg" />
+            </a>
+            <span>hello</span>
+        </div>
+        <div class="waterDiv">
+        </div>
+        <div class="waterDiv">
+
+            <img src="./imges/1.jpg" />
+        </div>
+        <div class="waterDiv">
+
+            <img src="./imges/1.jpg" />
+            <div class="waterDiv">
+
+                <img src="./imges/1.jpg" />
+            </div>
+            <div class="waterDiv">
+
+                <img src="./imges/1.jpg" />
+
+            </div>
+        </div>
+        <div class="waterDiv">
+
+            <img src="./imges/1.jpg" />
+        </div>
+        <div class="waterDiv">
+
+            <img src="./imges/1.jpg" />
+        </div>
+        <div class="waterDiv">
+
+            <img src="./imges/1.jpg" />
+        </div>
+        <div class="waterDiv">
+
+            <img src="./imges/1.jpg" />
+        </div>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        /* config area start*/
+        var total_width = 1300;
+        //瀑布流图父元素的宽度，用来计算列之间距离，不是设置父元素宽度
+        var col_num = 4;//设置列数
+        var col_width = 230;//设置列宽
+        var kid_class = "waterDiv";//设置瀑布流图子元素的类名
+        var margin_vertical = 20;//设置瀑布流图子元素的垂直间距
+        /* config area end*/
+
+        /* ↑ for users ↑ */
+        /* check start */
+        if (col_num * col_width > total_width) {
+            //如果列数过多，影响显示效果，会在console中提醒
+            console.log("Warning : Father div is too small !!!!");
+        }
+
+        /* check end */
+
+        /* variables start */
+        var col_heights = new Array(col_num);//生成用来记录当前列长度的数组
+        for (i = 0; i < col_heights.length; i++) { //将数组元素值置为0
+            col_heights[i] = 0;
+        }
+        var min_col = 0;//遍历时，当前长度最小的列在数组中的的索引值
+        var top_int = 0;//遍历时，当前元素应设置的绝对定位top值
+        var left_int = 0;//遍历时，当前元素应设置的绝对定位left值
+        var i; //for循环计数变量
+        var str = ""; //空的字符串变量
+        var margin_horizontal = (total_width - col_num * col_width) / (col_num * 2);
+        //自动计算列之间距离
+        /* variables end*/
+        $("." + kid_class).each(function () { //遍历所有.waterDiv并设置top与left值
+            min_col = minOfArray(col_heights);//获取当前长度最小的列的索引值
+            top_int = col_heights[min_col];//当前元素应设置的绝对定位top值
+
+
+            left_int = margin_horizontal + (col_width + margin_horizontal * 2) * min_col;//计算当前元素应设置的绝对定位left值
+
+
+            $(this).css("top", top_int + "px");//对top, left进行设置
+            $(this).css("left", left_int + "px");//"px"不要忘记加啊！
+            col_heights[min_col] += $(this).height() + margin_vertical;//更新列的长度
+        });
+
+        function minOfArray(col_array) {
+            //这是一个找出数组中最小的元素，并返回该元素索引的函数，就是在上一段代码中调用的。
+            /* 
+            * input : Array of numbers
+            * output: the index of minimal number.
+            */
+            var min_num = col_array[0];
+            var min_index = 0;
+            for (var i = 0; i < col_array.length; i++) {
+                if (col_array[i] < min_num) {
+                    min_num = col_array[i];
+                    min_index = i;
+                }
+            }
+
+            return min_index;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
